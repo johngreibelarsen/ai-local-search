@@ -9,6 +9,4 @@ allowed. Downhill moves are accepted readily early in the annealing
 schedule and then less often as time goes on. The schedule input
 determines the value of the temperature T as a function of time.
 
-![Simulated Annealing](img/Hill_Climbing_with_Simulated_Annealing.gif
-
 ![Simulated Annealing](https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif)
