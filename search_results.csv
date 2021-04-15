@@ -1,40 +1,69 @@
-,,,,,,,
-,Local search algorithms and test them on the Traveling Salesman Problem (TSP) between a few dozen US state capitals ,,,,,,
-,,,,,,,
-,,,,,,,
-,Algorithm,No. of Cities,Path Length,Elapsed Time,Problem Distance,Problem Successor,
-,,,,,,,
-,Hill Climing,,,,,,
-,,4,822.91,5.3 ms,Euclidean,Permutations,10 samples
-,,7,1410.66,57.68 ms,Euclidean,Permutations,10 samples
-,,12,3203.04,3171.54 ms,Euclidean,Permutations,10 samples
-,,16,3457.8,266466.19 ms,Euclidean,Permutations,4 samples
-,Local Beam,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,Simulated Annealing ,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,Late Acceptance Hill Climbing,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,Permutations: generate neighbors of the current path by selecting a starting point and an ending point in the current path and add all permutations,,,,,,
-,,,,,,,
-,,,,,,,
-,Initial path length for no of cities = 4 is 998.16,,,,,,
-,Initial path length for no of cities = 7 is 1918.58,,,,,,
-,Initial path length for no of cities = 12 is 3982.53,,,,,,
-,Initial path length for no of cities = 16 is 4842.21,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,3457.8,276729.67,,,,
+,,,,,,,,
+,Local search algorithms and test them on the Traveling Salesman Problem (TSP) between a few dozen US state capitals ,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Algorithm,No. of Cities,Path Length,Elapsed Time (ms),Parameters,Problem Distance,Problem Successor,Sampling
+,,,,,,,,
+,Hill Climing,,,,,,,
+,,4,822.91,5.3,epochs=100,Euclidean,Permutations (interval=num_cities/2+1),10 samples
+,,7,1410.66,57.68,epochs=100,Euclidean,Permutations (interval=num_cities/2+1),10 samples
+,,12,3203.04,3171.54,epochs=100,Euclidean,Permutations (interval=num_cities/2+1),10 samples
+,,16,3457.8,266466.19,epochs=100,Euclidean,Permutations (interval=num_cities/2+1),4 samples
+,,4,822.91,4.5,epochs=100,Euclidean,Inverse_rotate (interval=num_cities/2+1),10 samples
+,,7,1551.48,6.64,epochs=100,Euclidean,Inverse_rotate (interval=num_cities/2+1),10 samples
+,,12,3672.24,10.53,epochs=100,Euclidean,Inverse_rotate (interval=num_cities/2+1),10 samples
+,,16,4532.32,14.56,epochs=100,Euclidean,Inverse_rotate (interval=num_cities/2+1),10 samples
+,,24,6046.94,24.3,epochs=100,Euclidean,Inverse_rotate (interval=num_cities/2+1),10 samples
+,,4,822.91,7.58,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=9, cutoff_perms=25)",10 samples
+,,7,1410.66,117.03,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=9, cutoff_perms=25)",10 samples
+,,12,3070.79,6182.14,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=9, cutoff_perms=25)",10 samples
+,,16,3088.13,617239.93,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=9, cutoff_perms=25)",4 samples
+,,4,822.91,8.58,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,7,1410.66,161.47,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,12,3070.79,7093.27,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,16,3784.84,7171.08,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,24,5260.44,7353.31,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,4,822.91,8.76,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)
+With feedback per iterration",10 samples
+,,7,1410.66,160.42,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)
+With feedback per iterration",10 samples
+,,12,3093.52,7105.58,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)
+With feedback per iterration",10 samples
+,,16,3784.84,7156.95,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)
+With feedback per iterration",10 samples
+,,24,5260.44,7370.56,epochs=100,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)
+With feedback per iterration",10 samples
+,,,,,,,,
+,,7,1410.66,1603.36,Epochs=1000,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,7,1410.66,15987.15,Epochs=10000,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
+,,7,1227.07,93319.15,Epochs=1000,Euclidean,"calculated_distance_ordering (interval=num_cities, cutoff_length=7, cutoff_perms=10000)",10 samples
+,,,,,,,,
+,Local Beam,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Simulated Annealing ,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Late Acceptance Hill Climbing,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Permutations: generate neighbors of the current path by selecting a starting point and an ending point in the current path and add all permutations,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,Initial path length for no of cities = 4 is 998.16,,,,,,,
+,Initial path length for no of cities = 7 is 1918.58,,,,,,,
+,Initial path length for no of cities = 12 is 3982.53,,,,,,,
+,Initial path length for no of cities = 16 is 4842.21,,,,,,,
+,Initial path length for no of cities = 24 is 6320.94,,,,,,,
