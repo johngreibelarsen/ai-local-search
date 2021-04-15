@@ -36,24 +36,32 @@ With feedback per iterration",10 samples
 ,,,,,,,,
 ,,7,1410.66,1603.36,Epochs=1000,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
 ,,7,1410.66,15987.15,Epochs=10000,Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=1000)",10 samples
-,,7,1227.07,93319.15,Epochs=1000,Euclidean,"calculated_distance_ordering (interval=num_cities, cutoff_length=7, cutoff_perms=10000)",10 samples
+,,7,1227.97,93319.15,Epochs=1000,Euclidean,"calculated_distance_ordering (interval=num_cities, cutoff_length=7, cutoff_perms=10000)",10 samples
 ,,,,,,,,
 ,Local Beam,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Simulated Annealing ,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,Late Acceptance Hill Climbing,,,,,,,
-,,,,,,,,
+,,4,822.91,77.16,"Epochs=100, beamWidth=5",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,7,1410.66,829.11,"Epochs=100, beamWidth=5",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,12,3070.79,32009.52,"Epochs=100, beamWidth=5",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,16,3784.84,32985.34,"Epochs=100, beamWidth=5",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,24,5260.44,32524.74,"Epochs=100, beamWidth=5",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,4,822.91,74.79,"Epochs=100, beamWidth=5
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,7,1227.97,821.79,"Epochs=100, beamWidth=5
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,12,1993.97,32196.06,"Epochs=100, beamWidth=5
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,16,2519.37,32795.22,"Epochs=100, beamWidth=5
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,24,3868.5,32459.74,"Epochs=100, beamWidth=5
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,7,1227.97,2929.52,"Epochs=100, beamWidth=15
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,12,1781.81,96941.16,"Epochs=100, beamWidth=15
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,16,2483.56,98945.32,"Epochs=100, beamWidth=15
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
+,,24,3674.01,99562.45,"Epochs=100, beamWidth=15
+Inital random shuffle",Euclidean,"calculated_distance_ordering (interval=num_cities/2+1, cutoff_length=7, cutoff_perms=100)",10 samples
 ,,,,,,,,
 ,,,,,,,,
 ,,,,,,,,
