@@ -182,7 +182,7 @@ class TravelingSalesmanProblem:
         return neighbors
 
     # successors_with_calculated_distance_ordering
-    def successors(self, startIdx, endIdx, cutoff_length=7, cutoff_perms=25):
+    def successors_with_calculated_distance_ordering(self, startIdx, endIdx, cutoff_length=7, cutoff_perms=25):
         """ Return a list of states in the neighborhood of the current state.
 
         You may define the neighborhood in many different ways; although some
@@ -230,6 +230,86 @@ class TravelingSalesmanProblem:
                 break
             #print(f"sortd entris: counter={counter}, perm={perm}")
             neighbors.append(TravelingSalesmanProblem([self.path[i] for i in range(0, startIdx, 1)] + [*perm[1]] + [self.path[i] for i in range(endIdx, len(self.path),  1)]))
+        stop_time2 = time.perf_counter()
+        stop_time3 = time.perf_counter()
+        print("Permutation time: {:.2f} milliseconds".format((stop_time1 - start_time1) * 1000 ))
+        print("Neighbor creation time: {:.2f} milliseconds".format((stop_time2 - start_time2) * 1000 ))
+        print("Total time: {:.2f} milliseconds".format((stop_time3 - start_time3) * 1000 ))
+        return neighbors
+
+
+    # successors_with_calculated_distance_ordering
+    def successors(self, startIdx, endIdx, cutoff_length=7, cutoff_perms=25):
+        """ Return a list of states in the neighborhood of the current state.
+
+        You may define the neighborhood in many different ways; although some
+        will perform better than others. One method that usually performs well
+        for TSP is to generate neighbors of the current path by selecting a
+        starting point and an ending point in the current path and reversing
+        the order of the nodes between those boundaries.
+
+        For example, if the current list of cities (i.e., the path) is [A, B, C, D]
+        then the neighbors will include [B, A, C, D], [C, B, A, D], and [A, C, B, D].
+        (The order of successors does not matter.)
+
+        Returns
+        -------
+        iterable<Problem>
+            A list of TravelingSalesmanProblem instances initialized with their list
+            of cities set to one of the neighboring permutations of cities in the
+            present state
+        """
+        start_time1 = time.perf_counter()
+        start_time3 = time.perf_counter()
+        if (endIdx-startIdx) > cutoff_length:
+            endIdx = startIdx + cutoff_length
+
+        sub_path = [self.path[i] for i in range(startIdx, endIdx, 1)]
+        perms = permutations(sub_path)
+
+        selected_perms = []
+        len_perm = endIdx - startIdx
+        sub_path_tuple = tuple(sub_path)
+        for perm in perms:
+
+            if perm == sub_path_tuple :
+                continue
+            perm_distance = 0
+            for idx in range(len_perm - 1):
+                if idx < len_perm:
+                    perm_distance += dist(perm[idx][1], perm[idx + 1][1])
+            selected_perms.append((perm_distance, perm))
+        stop_time1 = time.perf_counter()
+        start_time2 = time.perf_counter()
+        neighbors = []
+        start_path = [self.path[i] for i in range(0, startIdx, 1)]
+        end_path = [self.path[i] for i in range(endIdx, len(self.path), 1)]
+        sorted_selected_perms = sorted(selected_perms)
+        len_of_path = len(self.path)
+        for counter, perm in enumerate(sorted_selected_perms):
+            if counter >= 2*cutoff_perms:
+                break
+            new_path = start_path + [*perm[1]] + random.sample(end_path, len(end_path))
+            neighbors.append(TravelingSalesmanProblem(new_path))
+            if random.random() < 0.25:
+                # Swap endIdx -3
+                endIdx_3 = new_path[endIdx - 3]
+                end_path_idx = random.randint(endIdx, len_of_path - 1)
+                new_path[endIdx - 3] = new_path[end_path_idx]
+                new_path[end_path_idx] = endIdx_3
+            if random.random() < 0.50:
+                # Swap endIdx -2
+                endIdx_2 = new_path[endIdx - 2]
+                end_path_idx = random.randint(endIdx, len_of_path - 1)
+                new_path[endIdx - 2] = new_path[end_path_idx]
+                new_path[end_path_idx] = endIdx_2
+            if random.random() < 0.75:
+                # Swap endIdx -1
+                endIdx_1 = new_path[endIdx - 1]
+                end_path_idx = random.randint(endIdx, len_of_path - 1)
+                new_path[endIdx - 1] = new_path[end_path_idx]
+                new_path[end_path_idx] = endIdx_1
+
         stop_time2 = time.perf_counter()
         stop_time3 = time.perf_counter()
         print("Permutation time: {:.2f} milliseconds".format((stop_time1 - start_time1) * 1000 ))
@@ -319,9 +399,10 @@ def test_permutations():
     #for suc in tsp.successors(0, 3):
     #    print(f"Permutation state: {suc}")
     #print(f"Successor state selected: {tsp.get_successor()}")
-    successor_paths = [(x.path) for x in tsp.successors(0, 7, 1000)]
-    #for p in successor_paths:
-    #    print(p)
+    successor_paths = [(x.path) for x in tsp.successors(0, 7, 1000, 100)]
+    print(f"successor_paths len = {len(successor_paths)}")
+    for p in successor_paths:
+        print(p)
 
 
 def test_successors():
